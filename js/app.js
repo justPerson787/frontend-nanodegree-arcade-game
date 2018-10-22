@@ -27,19 +27,42 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 class Hero {
     constructor() {
-      this.x = 0;
-      this.y = 0;
+        // x & y steps (101 and 83) are based on canvas' .width and .height properties from engine.js file
+      this.x = 101*2;
+      this.y = 83*5;
       this.sprite = 'images/char-boy.png';
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-  }
+    handleInput(input) {
+        switch(input) {
+            case 'left':
+                if (this.x > 0) {
+                this.x -= 101;
+                }
+                break;
+            case 'right':
+                if (this.x <=303) {
+                this.x += 101;
+                }
+                break;
+            case 'up':
+                this.y -= 83;
+                break;
+            case 'down':
+                this.y += 83;
+                break;
+        }
+    }
+}
 
 
 // Now instantiate your objects.
 const player = new Hero();
+
 // Place all enemy objects in an array called allEnemies
+const allEnemies = [];
 // Place the player object in a variable called player
 
 
