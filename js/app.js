@@ -4,9 +4,10 @@ var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // The image/sprite for our enemies
     this.sprite = 'images/enemy-bug.png';
+    this.x= 0;
+    this.y = 65;
 };
 
 // Update the enemy's position, required method for game
@@ -15,9 +16,14 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x <=505) {
+        this.x += 200*dt;
+    } else {
+        this.x = 0;
+    }
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -48,10 +54,14 @@ class Hero {
                 }
                 break;
             case 'up':
-                this.y -= 83;
+                if (this.y > 0) {
+                    this.y -= 83;
+                }
                 break;
             case 'down':
-                this.y += 83;
+                if (this.y < 415) {
+                    this.y += 83;
+                }
                 break;
         }
     }
@@ -60,9 +70,11 @@ class Hero {
 
 // Now instantiate your objects.
 const player = new Hero();
+const enemy1 = new Enemy();
 
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
+allEnemies.push(enemy1);
 // Place the player object in a variable called player
 
 
