@@ -52,6 +52,14 @@ var Engine = (function(global) {
          */
         lastTime = now;
 
+        //check for winning condition
+        if (player.y == -20) {
+            setTimeout(function(){
+                alert('Win');        
+            }, 300);
+            return;            
+        }
+
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
@@ -79,7 +87,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        // checkCollisions() - implemented in app.js;
     }
 
     /* This is called by the update function and loops through all of the

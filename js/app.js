@@ -73,14 +73,16 @@ class Hero {
 
     //this method  identifies collision
     update() {
+        //this condition identifies collision
         for (let enemy of allEnemies) {
             if (this.y === enemy.y && (enemy.x - this.x < this.collisionDist) && enemy.x > this.x-this.collisionDist) {
                 this.reset();
             } 
-        }            
+        } 
+        //winning condition
+                   
     }             
 }
-
 
 // New objects instantiated */
 const player = new Hero();
@@ -90,16 +92,12 @@ const enemy3 = new Enemy(0, 229, 202);
 const enemy4 = new Enemy(60, 146, 170);
 
 
-// Place all enemy objects in an array called allEnemies
+// All enemy objects are placed in an array called allEnemies
 const allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3, enemy4);
-console.log(allEnemies);
-// Place the player object in a variable called player
 
-
-
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// This listens for key presses and sends the keys to 
+// Player.handleInput() method. 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
