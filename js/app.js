@@ -1,9 +1,6 @@
 
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
     //initial position of an enemy
     this.x = x;
     this.y = y;
@@ -15,7 +12,7 @@ var Enemy = function(x, y, speed) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
+    //Any movement is multiplied by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
     if (this.x <=505) {
@@ -31,15 +28,15 @@ Enemy.prototype.render = function() {
 };
 
 // Player class
-// This class requires an update(), render() and
-// a handleInput() method.
 class Hero {
     constructor() {
         // x & y steps (101 and 83) are based on canvas' .width and .height properties from engine.js file
-      this.x = 101*2;
-      this.y = 83*5-20;
+      this.stepX = 101;
+      this.stepY = 83;
+      this.x = this.stepX*2;
+      this.y = this.stepY*5 - 20;
       this.sprite = 'images/char-boy.png';
-      this.collisionDist = 15;
+      this.collisionDist = 10;
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -48,57 +45,49 @@ class Hero {
         switch(input) {
             case 'left':
                 if (this.x > 0) {
-                this.x -= 101;
+                this.x -= this.stepX;
                 }
                 break;
             case 'right':
-                if (this.x <=303) {
-                this.x += 101;
+                if (this.x <=this.stepX*3) {
+                this.x += this.stepX;
                 }
                 break;
             case 'up':
                 if (this.y > 0) {
-                    this.y -= 83;
+                    this.y -= this.stepY;
                 }
                 break;
             case 'down':
-                if (this.y < 415) {
-                    this.y += 83;
+                if (this.y < this.stepY*5) {
+                    this.y += this.stepY;
                 }
                 break;
         }
     }
+    // reset Hero to starting position after collision
+    reset() {
+        this.x = this.stepX*2;
+        this.y = this.stepY*5 - 20;
+    }
 
+    //this method  identifies collision
     update() {
         for (let enemy of allEnemies) {
             if (this.y === enemy.y && (enemy.x - this.x < this.collisionDist) && enemy.x > this.x-this.collisionDist) {
-                alert('Collision');
+                this.reset();
             } 
         }            
-    }
-             
-     /*   //to hide back unmatched cards
-function unmatched() {
-    //openCards[1].style.backgroundColor = "pink";
-    block = true;
-    setTimeout(function(){
-        openCards[0].classList.remove('open', 'show');
-        openCards[1].classList.remove('open', 'show');
-        openCards = [];
-        block = false;
-    }, 700);
-    moveCounter();*/
-    
-    
+    }             
 }
 
 
 // New objects instantiated */
 const player = new Hero();
-const enemy1 = new Enemy(0, 83-20, 101);
-const enemy2 = new Enemy(0, 166-20, 150);
-const enemy3 = new Enemy(0, 249-20, 202);
-const enemy4 = new Enemy(60, 166-20, 170);
+const enemy1 = new Enemy(0, 63, 101);
+const enemy2 = new Enemy(0, 146, 150);
+const enemy3 = new Enemy(0, 229, 202);
+const enemy4 = new Enemy(60, 146, 170);
 
 
 // Place all enemy objects in an array called allEnemies
