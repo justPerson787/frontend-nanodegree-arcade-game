@@ -1,3 +1,25 @@
 body {
     text-align: center;
 }
+
+#modal {
+    display: none; /* hidden by default */
+    background-color: white;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 30%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.content {
+    text-align: center;
+    color: black;
+    font: 32px;
+    font-weight: bold;
+}

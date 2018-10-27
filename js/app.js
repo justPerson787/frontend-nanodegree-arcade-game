@@ -78,9 +78,7 @@ class Hero {
             if (this.y === enemy.y && (enemy.x - this.x < this.collisionDist) && enemy.x > this.x-this.collisionDist) {
                 this.reset();
             } 
-        } 
-        //winning condition
-                   
+        }                 
     }             
 }
 
