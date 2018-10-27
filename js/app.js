@@ -37,8 +37,9 @@ class Hero {
     constructor() {
         // x & y steps (101 and 83) are based on canvas' .width and .height properties from engine.js file
       this.x = 101*2;
-      this.y = 83*5;
+      this.y = 83*5-20;
       this.sprite = 'images/char-boy.png';
+      this.collisionDist = 15;
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -67,15 +68,37 @@ class Hero {
                 break;
         }
     }
+
+    update() {
+        for (let enemy of allEnemies) {
+            if (this.y === enemy.y && (enemy.x - this.x < this.collisionDist) && enemy.x > this.x-this.collisionDist) {
+                alert('Collision');
+            } 
+        }            
+    }
+             
+     /*   //to hide back unmatched cards
+function unmatched() {
+    //openCards[1].style.backgroundColor = "pink";
+    block = true;
+    setTimeout(function(){
+        openCards[0].classList.remove('open', 'show');
+        openCards[1].classList.remove('open', 'show');
+        openCards = [];
+        block = false;
+    }, 700);
+    moveCounter();*/
+    
+    
 }
 
 
-// Now instantiate your objects.
+// New objects instantiated */
 const player = new Hero();
-const enemy1 = new Enemy(0, 65, 100);
-const enemy2 = new Enemy(0, 140, 150);
-const enemy3 = new Enemy(0, 225, 200);
-const enemy4 = new Enemy(60, 140, 170);
+const enemy1 = new Enemy(0, 83-20, 101);
+const enemy2 = new Enemy(0, 166-20, 150);
+const enemy3 = new Enemy(0, 249-20, 202);
+const enemy4 = new Enemy(60, 166-20, 170);
 
 
 // Place all enemy objects in an array called allEnemies
