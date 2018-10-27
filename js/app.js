@@ -84,15 +84,16 @@ class Hero {
 
 // New objects instantiated */
 const player = new Hero();
-const enemy1 = new Enemy(0, 63, 101);
+const enemy1 = new Enemy(0, 63, 160);
 const enemy2 = new Enemy(0, 146, 150);
 const enemy3 = new Enemy(0, 229, 202);
-const enemy4 = new Enemy(60, 146, 170);
+const enemy4 = new Enemy(60, 146, 180);
+const enemy5 = new Enemy(0, 63, 303);
 
 
 // All enemy objects are placed in an array called allEnemies
 const allEnemies = [];
-allEnemies.push(enemy1, enemy2, enemy3, enemy4);
+allEnemies.push(enemy1, enemy2, enemy3, enemy4, enemy5);
 
 // This listens for key presses and sends the keys to 
 // Player.handleInput() method. 
