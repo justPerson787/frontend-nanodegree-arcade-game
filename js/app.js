@@ -75,7 +75,6 @@ class Hero {
 
     //this method  identifies collision
     update() {
-        //this condition identifies collision
         for (let enemy of allEnemies) {
             if (this.y === enemy.y && (enemy.x - this.x < this.collisionDist) && enemy.x > this.x-this.collisionDist) {
                 this.reset();
@@ -94,13 +93,12 @@ const enemy5 = new Enemy(0, 63, 303);
 
 
 // All enemy objects are placed in an array called allEnemies
-const allEnemies = [];
-allEnemies.push(enemy1, enemy2, enemy3, enemy4, enemy5);
+const allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
 
 // This listens for key presses and sends the keys to 
 // Player.handleInput() method. 
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
