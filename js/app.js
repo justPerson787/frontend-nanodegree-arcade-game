@@ -1,13 +1,15 @@
 
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
-    //initial position of an enemy
-    this.x = x;
-    this.y = y;
-    // The image/sprite for our enemies
-    this.sprite = 'images/enemy-bug.png';
-    this.speed = speed;
-};
+class Enemy {
+    constructor(x, y, speed) {
+        //initial position of an enemy
+        this.x = x;
+        this.y = y;
+        // The image/sprite for our enemies
+        this.sprite = 'images/enemy-bug.png';
+        this.speed = speed;
+    };
+}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
